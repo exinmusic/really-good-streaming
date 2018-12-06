@@ -1,5 +1,5 @@
-from django.db import models
+from storages.backends.s3boto3 import S3Boto3Storage
 
-class Document(models.Model):
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-    upload = models.FileField()
+class MediaStorage(S3Boto3Storage):
+    location = 'media'
+    file_overwrite = False
